@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanFlow - Gestão Inteligente & Relatório de Despesas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-badge { animation: pulse-ring 2s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-800">
+
+    <!-- Top Urgency Banner -->
+    <div class="bg-slate-900 text-white text-xs md:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>⚡ Oferta Especial por Tempo Limitado: De <span class="line-through text-slate-400">R$ 97,00</span> por apenas <strong class="text-emerald-400 font-bold text-sm md:text-base">R$ 19,90</strong></span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo & Icon -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-800 via-emerald-600 to-emerald-400 p-0.5 shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform duration-200">
+                    <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
+                        <!-- Custom Minimalist Financial Growth / Shield SVG Icon -->
+                        <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            <circle cx="6" cy="18" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-xl text-slate-900 tracking-tight leading-none group-hover:text-emerald-600 transition-colors">
+                        Finan<span class="text-emerald-600">Flow</span>
+                    </span>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 mt-1">Gestão Inteligente</span>
+                </div>
+            </a>
+
+            <!-- Quick WhatsApp CTA -->
+            <div>
+                <a href="https://wa.me/5511947565834?text=Olá!%20Quero%20comprar%20a%20Planilha%20FinanFlow%20por%20R$%2019,90." 
+                   target="_blank"
+                   class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs md:text-sm shadow-md shadow-emerald-600/20 transition-all duration-200 transform hover:-translate-y-0.5">
+                    <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    Comprar via WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-emerald-50/40 via-white to-slate-50">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            
+            <div class="inline-flex items-center space-x-2 bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs font-bold px-4 py-1.5 rounded-full mb-6 shadow-sm">
+                <span>🔥 O jeito mais fácil e barato de dominar suas contas</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
+                Organize seu dinheiro em minutos com a <span class="text-emerald-600 underline decoration-emerald-300 decoration-wavy decoration-2">FinanFlow</span>
+            </h1>
+
+            <p class="text-slate-600 text-base md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed font-normal">
+                Anote o local, nome e valor do gasto e deixe o <strong>cálculo automático</strong> fazer tudo. Sem formulas complicadas ou mensalidades.
+            </p>
+
+            <!-- Ultra Highlighted Fast Purchase Pricing Card -->
+            <div class="max-w-md mx-auto my-8 bg-white border-2 border-emerald-500 rounded-3xl p-6 md:p-8 shadow-2xl relative transform hover:scale-[1.01] transition-transform">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white text-xs font-black uppercase tracking-wider px-4 py-1.5 rounded-full shadow-md">
+                    79% DE DESCONTO - SÓ HOJE
+                </div>
+
+                <div class="text-slate-500 text-xs font-medium uppercase tracking-wider mb-2">Pagamento Único • Sem Mensalidade</div>
+                
+                <div class="flex items-center justify-center gap-3 mb-2">
+                    <span class="text-slate-400 line-through text-lg font-bold">De R$ 97,00</span>
+                    <span class="bg-red-100 text-red-700 text-xs font-extrabold px-2 py-0.5 rounded-md">Economize R$ 77,10</span>
+                </div>
+
+                <div class="flex items-baseline justify-center gap-1 text-slate-900 mb-2">
+                    <span class="text-xl font-bold">R$</span>
+                    <span class="text-6xl font-black tracking-tight text-emerald-600">19</span>
+                    <span class="text-3xl font-bold text-emerald-600">,90</span>
+                </div>
+
+                <!-- Timer countdown element -->
+                <div class="bg-slate-50 rounded-xl p-3 mb-6 border border-slate-100 flex items-center justify-center space-x-2 text-slate-700 text-xs font-semibold">
+                    <svg class="w-4 h-4 text-emerald-600 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    <span>Esta oferta expira em: <strong id="timer" class="text-emerald-700">14:59</strong> min</span>
+                </div>
+
+                <!-- Buy Action Button -->
+                <a href="https://wa.me/5511947565834?text=Olá!%20Quero%20comprar%20agora%20a%20Planilha%20FinanFlow%20por%20R$%2019,90." 
+                   target="_blank"
+                   class="w-full inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-lg shadow-xl shadow-emerald-600/30 transition-all duration-200 transform active:scale-95">
+                    <span>COMPRAR AGORA NO ZAP</span>
+                    <svg class="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+
+                <!-- Delivery Badge -->
+                <div class="mt-4 flex items-center justify-center text-xs text-slate-500 font-medium space-x-1">
+                    <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>Receba o acesso direto no seu WhatsApp</span>
+                </div>
+            </div>
+
+            <!-- Preview Card / Mockup -->
+            <div class="mt-12 relative max-w-3xl mx-auto rounded-3xl bg-slate-900 text-white p-6 md:p-8 border border-slate-800 shadow-2xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                        <span class="text-xs text-slate-400 font-mono ml-2">FinanFlow_Relatorio_Despesas.xlsx</span>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-400 bg-emerald-950 px-2.5 py-1 rounded-md border border-emerald-800/50">Cálculo Automático</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-slate-800/90 p-4 rounded-xl border border-slate-700/60">
+                        <span class="text-xs text-slate-400 font-medium">Controle Semanal</span>
+                        <p class="text-lg font-bold text-white mt-1">R$ 380,00</p>
+                        <span class="text-[10px] text-emerald-400">Contabilizado de forma limpa</span>
+                    </div>
+                    <div class="bg-slate-800/90 p-4 rounded-xl border border-slate-700/60">
+                        <span class="text-xs text-slate-400 font-medium">Controle Mensal</span>
+                        <p class="text-lg font-bold text-emerald-400 mt-1">R$ 1.520,00</p>
+                        <span class="text-[10px] text-slate-400">Atualize as datas livremente</span>
+                    </div>
+                    <div class="bg-slate-800/90 p-4 rounded-xl border border-slate-700/60">
+                        <span class="text-xs text-slate-400 font-medium">Acesso permanente</span>
+                        <p class="text-lg font-bold text-white mt-1">100% Cópia Sua</p>
+                        <span class="text-[10px] text-emerald-400">Nunca perde o arquivo</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Key Features & Specs -->
+    <section class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-3">Tudo o que você precisa, sem frescura</h2>
+                <p class="text-slate-600 text-sm md:text-base">Projetada especificamente para quem quer colocar a vida financeira nos trilhos sem perder horas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-4">
+                        💡
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">Simplicidade Extrema</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Em cada tópico haverá o campo "R$ 0,00". Coloque o nome do gasto, o local e o valor. A planilha faz a soma automática.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-4">
+                        📊
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">Relatório Semanal e Mensal</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        As despesas são organizadas por semanas, mas você pode usar para controle de forma mensal alterando facilmente as datas.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-4">
+                        📑
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">Guia Rápido Incluso</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Acompanha um Guia Rápido em PDF mostrando exatamente como criar sua cópia e utilizar todos os recursos em poucas etapas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Fast Sale Banner -->
+    <section class="py-16 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-extrabold mb-4">Pronto para organizar suas contas por apenas R$ 19,90?</h2>
+            <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto mb-8">
+                Clique no botão abaixo, me chame no WhatsApp e receba seu link de acesso imediato sem burocracia.
+            </p>
+
+            <a href="https://wa.me/5511947565834?text=Olá!%20Quero%20aproveitar%20a%20promoção%20da%20Planilha%20FinanFlow%20por%20R$%2019,90!" 
+               target="_blank"
+               class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-lg shadow-xl shadow-emerald-500/20 transition-all duration-200 transform hover:-translate-y-0.5">
+                <svg class="w-6 h-6 mr-2 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                Falar com o Vendedor no WhatsApp (11) 94756-5834
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-950 text-slate-500 text-center text-xs border-t border-slate-900">
+        <p>&copy; 2026 FinanFlow - Gestão Inteligente. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Countdown Timer Script -->
+    <script>
+        let timeInSeconds = 15 * 60;
+        const timerElement = document.getElementById('timer');
+
+        setInterval(() => {
+            if (timeInSeconds > 0) {
+                timeInSeconds--;
+                const minutes = Math.floor(timeInSeconds / 60);
+                const seconds = timeInSeconds % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
